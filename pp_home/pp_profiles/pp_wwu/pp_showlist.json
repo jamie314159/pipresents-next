@@ -19,7 +19,7 @@
    "hint-font": "Helvetica 30 bold", 
    "hint-text": "Press Return", 
    "hint-y": "100",
-   "image-window": "shrink 100 100 900 900", 
+   "image-window": "fit", 
    "live-tracks-dir": "", 
    "medialist": "liveshow.json", 
    "mplayer-audio": "hdmi", 
