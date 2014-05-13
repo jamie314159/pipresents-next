@@ -3,16 +3,6 @@ PI PRESENTS  - Version 1.2.3
 
 This repository contains Beta Test software for the next version of Pi Presents. If you are unhappy with bleeding edge software then use the main Pi Presents repository and upgrade later.
 
-FOR WWU PEOPLE
-================
-1) run "./prep.sh" if you dont have a pp_home directory outside of this file yet.
-   Otherwise do "cp -r pp_home/pp_profiles/pp_wwu ../pp_home/pp_profiles/pp_wwu"
-2) Add or remove files from ../pp_home/pp_live_tracks
-3) rename files for duration, start, and exp functionality
-   	  filename[_dur][_start][_exp].ext
-	  example: dragon_dur5_start2014-04-28-00-00-00_exp2014-04-28-10-00-00.png
-4) run "python pipresents.py -p pp_wwu"
-
 FOR BETA TESTERS
 ================
 Thank you for  helping me improve Pi Presents.
