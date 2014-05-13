@@ -32,6 +32,15 @@ class ShowList:
     def print_list(self):
         print self._shows
 
+    def get_dur(self):
+        return self._shows[1]["duration"]
+
+    def assign_dur(self, duration):
+        self._shows[1]["duration"] = duration
+        #return for debugging purposes
+        return self._shows[1]["duration"]
+
+
     def length(self):
         return self._num_shows
         
