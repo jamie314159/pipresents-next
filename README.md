@@ -3,15 +3,86 @@ PI PRESENTS  - Version 1.2.3
 
 This repository contains Beta Test software for the next version of Pi Presents. If you are unhappy with bleeding edge software then use the main Pi Presents repository and upgrade later.
 
-FOR WWU PEOPLE
+FOR WWU PEOPLE, Instructions to install on Rasbian OS
 ================
-1) run "./prep.sh" if you dont have a pp_home directory outside of this file yet.
-   Otherwise do "cp -r pp_home/pp_profiles/pp_wwu ../pp_home/pp_profiles/pp_wwu"
-2) Add or remove files from ../pp_home/pp_live_tracks
-3) rename files for duration, start, and exp functionality
-   	  filename[_dur][_start][_exp].ext
-	  example: dragon_dur5_start2014-04-28-00-00-00_exp2014-04-28-10-00-00.png
-4) run "python pipresents.py -p pp_wwu"
+
+
+
+Install required applications (MPlayer, PIL and X Server utils)
+------------------------------------------------------
+
+```
+sudo apt-get update
+sudo apt-get install python-imaging
+sudo apt-get install python-imaging-tk
+sudo apt-get install x11-xserver-utils
+sudo apt-get install unclutter
+sudo apt-get install mplayer
+sudo apt-get install uzbl
+```
+	   
+Download and install pexpect
+-----------------------------
+
+Specified here http://www.noah.org/wiki/pexpect#Download_and_Installation and below.
+
+From a terminal window open in your home directory type:
+
+```
+wget http://pexpect.sourceforge.net/pexpect-2.3.tar.gz
+tar xzf pexpect-2.3.tar.gz
+cd pexpect-2.3
+sudo python ./setup.py install
+```
+
+Return the terminal window to the home directory.
+
+Setup Pipresents-next
+------------------------
+
+`cd` to cloned repository, pipresents-next.
+
+If you have a pp_home directory outside of the pipresents-next directory.
+```
+cp -r ~/pipresents-next/pp_home/pp_profiles/pp_wwu ~/pp_home/pp_profiles/pp_wwu
+```
+Otherwise run 
+```
+./prep.sh
+```
+Add or remove files from ../pp_home/pp_live_tracks
+
+rename files to have the following format for duration, start, and exp functionality
+`filename[_dur][_start][_exp].ext`
+
+example: `dragon_dur5_start2014-04-28-00-00-00_exp2014-04-28-10-00-00.png`
+
+If you would like to keep the pi from going to sleep do
+
+```
+sudo nano /etc/lightdm/lightdm.conf
+```
+In that file look for: `[SeatDefault]`
+
+and insert this line:
+```
+xserver-command=X -s 0dpms
+```
+
+run `python pipresents.py -p pp_wwu` to start pipresents
+
+Start Pi Presents when Power is applied to the Pi
+---------------------------------------------------
+
+This will function only if you have set 'boot to desktop' using raspi-config
+
+* Create the folder /home/pi/.config/lxsession/LXDE
+  
+  Note: The directory .config is already present in the image but you will need to select 'Show Hidden Files' in the File Manager to see it.
+
+* In this folder put a file named autostart containing one line specifying the full path of pipresents and of the home directory:
+
+  `sudo python /home/pi/pipresents/pipresents.py -o /home/pi -p pp_wwu -f`
 
 FOR BETA TESTERS
 ================
