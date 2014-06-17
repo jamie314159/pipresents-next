@@ -84,6 +84,39 @@ This will function only if you have set 'boot to desktop' using raspi-config
 
   `sudo python /home/pi/pipresents/pipresents.py -o /home/pi -p pp_wwu -f`
 
+
+Turn on and off display at specified times (Optional)
+-----------------------------------------------------
+
+Requires libcec and a CEC enabled hdmi display
+
+* Create /mypath/tvon.sh with:
+``` sh
+#!/bin/sh
+echo 'on 0' | /path/to/cec-client -s
+```
+
+* Create /mypath/tvoff.sh with:
+``` sh
+#!/bin/sh
+echo 'on 0' | /path/to/cec-client -s
+```
+
+It is important to use the correct path to cec-client or chrontab will not work correctly.
+Mine was at:
+`
+/usr/local/bin/cec-client
+`
+
+* Create a crontab to run these at the correct times. For example, to turn the display on at 7:30 and off at 18:30 each weekday, run `crontab -e`, and append:
+```
+30 7 * * 1-5 /mypath/tvon.sh
+30 18 * * 1-5 /mypath/tvon.sh
+
+```
+
+
+
 FOR BETA TESTERS
 ================
 Thank you for  helping me improve Pi Presents.
