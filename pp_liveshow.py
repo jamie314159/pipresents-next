@@ -344,7 +344,7 @@ class LiveShow:
 	        if endDate != "":
 			if endDate <= time.strftime('%Y-%m-%d-%H-%M-%S'):
 				try:
-					toArchive(runningFileName)
+					toArchive(runningFileName, self.pp_home)
 				except IOError:
 					None
 	self.showlist.assign_dur(dur);

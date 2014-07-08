@@ -48,10 +48,10 @@ def validate(date_text):
         return -1
 
 #send a file to pp_home/pp_livetracks/Archived
-def toArchive(runningFileName):
+def toArchive(runningFileName, pp_home):
     cwd = os.getcwd()
     parentDir = os.pardir
-    src = os.path.abspath(os.path.join(cwd, parentDir))+"/pp_home/pp_live_tracks/"+runningFileName
-    dst = os.path.abspath(os.path.join(cwd, parentDir))+"/pp_home/pp_live_tracks/Archived/"
+    src = pp_home + "/pp_live_tracks/" + runningFileName
+    dst = pp_home + "/pp_live_tracks/Archived/"
     shutil.move(src,dst)
         
