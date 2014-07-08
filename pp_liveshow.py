@@ -345,7 +345,7 @@ class LiveShow:
 			if endDate <= time.strftime('%Y-%m-%d-%H-%M-%S'):
 				try:
 					toArchive(runningFileName)
-				except Error:
+				except IOError:
 					None
 	self.showlist.assign_dur(dur);
 	skip = False
